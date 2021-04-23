@@ -6,8 +6,6 @@ import {SocketContext} from '../../context/socket';
 import useShareableState  from '../useShareableState'
 import { useBetween } from "use-between";
 
-import './Canvas.module.css';
-
 const Canvas = () => {
     // State
     const { sliderVal, colour, erase } = useBetween(useShareableState);
@@ -70,7 +68,7 @@ const Canvas = () => {
         ctx.canvas.height = window.innerHeight;
         canvas.style.cursor = "crosshair";
 
-        // When the socket recives a drawing event it draws an image on the canvas.
+      // When the socket recives a drawing event it draws an image on the canvas.
        socket.on("drawing", function(data){
             const image = new Image();
             image.onload = function() {
@@ -83,9 +81,8 @@ const Canvas = () => {
     
   return ( 
     <>
-        <div id="sketch">
+        <div className="object-scale-down">
             <canvas 
-                id="paint" 
                 onMouseDown={() => setMouse({ ...mouse, click: true })}
                 onMouseMove={(e) => draw(e)}
                 onMouseUp={() => setMouse({ ...mouse, click: false })}
