@@ -5,9 +5,10 @@ import { Canvas, DrawBar, ChatBar } from './components';
 import './App.css';
 
 function App() {
+  //flex flex-grow
   return (
     <SocketContext.Provider value={socket}>
-      <div className='flex flex-grow min-h-screen bg-gray-100 text-gray-800'>
+      <div className='min-h-screen bg-gray-100 text-gray-800'>
         <main className='main flex flex-col flex-grow md:ml-0'>
           <DrawBar />
           <Canvas />

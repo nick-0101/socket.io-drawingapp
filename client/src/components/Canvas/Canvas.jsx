@@ -36,7 +36,7 @@ const Canvas = () => {
             lastX: mouse.x,
             lastY: mouse.y
         })
-        ctx.lineWidth = sliderVal;
+        ctx.lineWidth = sliderVal || 1;
         ctx.lineJoin = "round";
         ctx.lineCap = "round";
         ctx.strokeStyle = colour;
@@ -72,8 +72,8 @@ const Canvas = () => {
         canvas.style.cursor = "crosshair";
 
         function resize() {
-            ctx.canvas.width = window.innerWidth;
-            ctx.canvas.height = window.innerHeight / 2;
+            ctx.canvas.width = window.innerWidth
+            ctx.canvas.height = window.innerHeight - 190;
         }
 
         window.addEventListener('resize', resize)
@@ -92,7 +92,7 @@ const Canvas = () => {
   return ( 
     <>
         <div className='flex-grow p-4 bg-main'>
-            <div className='border-4 border-gray-400 border bg-gray-800 rounded mt-4'>
+            <div className='bg-gray-800 rounded'>
                 <canvas 
                     onMouseDown={() => setMouse({ ...mouse, click: true })}
                     onMouseMove={(e) => draw(e)}
