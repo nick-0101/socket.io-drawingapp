@@ -6,6 +6,8 @@ import {SocketContext} from '../../context/socket';
 import useShareableState  from '../useShareableState'
 import { useBetween } from "use-between";
 
+// import './Canvas.module.css';
+
 const Canvas = () => {
     // State
     const { sliderVal, colour, erase } = useBetween(useShareableState);
@@ -27,9 +29,9 @@ const Canvas = () => {
         const ctx = canvas.getContext("2d");
         const bounds = canvas.getBoundingClientRect();
 
-        setMouse({
+        setMouse({  
             ...mouse,
-            x: e.pageX - bounds.left - window.scrollX,
+            x: e.pageX - bounds.left  - window.scrollX,
             y: e.pageY - bounds.top - window.scrollY,
             lastX: mouse.x,
             lastY: mouse.y
@@ -41,7 +43,7 @@ const Canvas = () => {
 
         if (mouse.click) {
             if(erase) {
-                ctx.strokeStyle = '#fff';
+                ctx.strokeStyle = '#262626';
                 ctx.beginPath();
                 ctx.moveTo(mouse.lastX, mouse.lastY);
                 ctx.lineTo(mouse.x, mouse.y);
@@ -64,30 +66,40 @@ const Canvas = () => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        ctx.canvas.width = window.innerWidth;
-        ctx.canvas.height = window.innerHeight;
+
+        // Resize Canvas
+        resize()
         canvas.style.cursor = "crosshair";
 
-      // When the socket recives a drawing event it draws an image on the canvas.
-       socket.on("drawing", function(data){
-            const image = new Image();
-            image.onload = function() {
-                ctx.drawImage(image, 0, 0);
-            };
-            image.src = data;
-        })
+        function resize() {
+            ctx.canvas.width = window.innerWidth;
+            ctx.canvas.height = window.innerHeight / 2;
+        }
+
+        window.addEventListener('resize', resize)
+
+        // When the socket recives a drawing event it draws an image on the canvas.
+        socket.on("drawing", function(data){
+                const image = new Image();
+                image.onload = function() {
+                    ctx.drawImage(image, 0, 0);
+                };
+                image.src = data;
+            })
     }, [socket])
 
     
   return ( 
     <>
-        <div className="object-scale-down">
-            <canvas 
-                onMouseDown={() => setMouse({ ...mouse, click: true })}
-                onMouseMove={(e) => draw(e)}
-                onMouseUp={() => setMouse({ ...mouse, click: false })}
-                ref={canvasRef}            
-            />
+        <div className='flex-grow p-4 bg-main'>
+            <div className='border-4 border-gray-400 border bg-gray-800 rounded mt-4'>
+                <canvas 
+                    onMouseDown={() => setMouse({ ...mouse, click: true })}
+                    onMouseMove={(e) => draw(e)}
+                    onMouseUp={() => setMouse({ ...mouse, click: false })}
+                    ref={canvasRef}  
+                />
+            </div>
         </div>
     </>
   );

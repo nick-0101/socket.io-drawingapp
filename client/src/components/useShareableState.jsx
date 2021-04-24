@@ -4,6 +4,7 @@ const useShareableState = () => {
   const [sliderVal, setSliderVal] = React.useState(1)
   const [colour, setColor] = React.useState('#000000')
   const [erase, setErase] = React.useState(false)
+  const [chatOpen, setChatOpen] = React.useState(false);
 
   return {
     sliderVal,
@@ -11,7 +12,9 @@ const useShareableState = () => {
     colour, 
     setColor,
     erase,
-    setErase
+    setErase,
+    chatOpen, 
+    setChatOpen,
   }
 }
 
