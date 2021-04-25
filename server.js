@@ -11,13 +11,30 @@ const io = require('socket.io')(http, {
 });
 
 app.use(cors());
+
+let userCounter = 0;
 io.sockets.on('connection', function (socket) {
-  console.log('We have a new client: ' + socket.id);
+  // Increment Usercount
+  userCounter++;
+  setInterval(() => {
+    socket.emit('user count', userCounter);
+  }, 20000);
+
+  // Send user id
+  socket.emit('your id', socket.id);
+
+  // Drawing
   socket.on('drawing', function (data) {
     socket.broadcast.emit('drawing', data);
   });
 
+  // Chat
+  socket.on('message', (body) => {
+    io.emit('send message', body);
+  });
+
   socket.on('disconnect', function () {
+    userCounter--;
     console.log('Client ' + socket.id + ' has disconnected.');
   });
 });

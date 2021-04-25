@@ -80,12 +80,12 @@ const Canvas = () => {
 
         // When the socket recives a drawing event it draws an image on the canvas.
         socket.on("drawing", function(data){
-                const image = new Image();
-                image.onload = function() {
-                    ctx.drawImage(image, 0, 0);
-                };
-                image.src = data;
-            })
+            const image = new Image();
+            image.onload = function() {
+                ctx.drawImage(image, 0, 0);
+            };
+            image.src = data;
+        })
     }, [socket])
 
     

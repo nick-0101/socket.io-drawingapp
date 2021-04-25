@@ -36,7 +36,7 @@ const DrawBar = () => {
 
     return (
         <header className='header bg-navbar text-gray-200 py-6 px-4 flex'>
-            <div className='flex-1 items-center flex justify-start w-96 flex-wrap'>
+            <div className='flex-1 items-center flex justify-start'>
                 <div className="flex flex-wrap">
                     <div onClick={(e => handleColourChange(e))} className="m-1" data-col="#eb3434" style={{width:'30px', height:30, background: '#eb3434'}}></div>
                     <div onClick={(e => handleColourChange(e))} className="m-1" data-col="#eb8334" style={{width:'30px', height:30, background: '#eb8334'}}></div>
@@ -54,7 +54,7 @@ const DrawBar = () => {
                 <div className="mx-2 text-gray-200">
                     <button onClick={(e => handleStrokeChange(e))} className="focus:outline-none py-3 px-3 bg-gray-800 rounded-lg text-gray-100 shadow-lg">
                         {sliderVal ? <div className="w-5 h-5">{sliderVal}</div> : 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M3 21v-4a4 4 0 1 1 4 4h-4" />
                                 <path d="M21 3a16 16 0 0 0 -12.8 10.2" />
@@ -65,7 +65,7 @@ const DrawBar = () => {
                     </button>
                 </div>
                 {/* Erase */}
-                <div className="mx-2 text-gray-200">
+                <div className="my-2 md:mx-2 text-gray-200">
                     <button onClick={(e => handleErase(e))} className={erase ? "py-3 px-3 bg-gray-800 rounded-lg text-gray-100 shadow-lg focus:outline-none ring border-blue-300" : "focus:outline-none py-3 px-3 bg-gray-800 rounded-lg text-gray-100 shadow-lg"}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -76,7 +76,7 @@ const DrawBar = () => {
                 </div>
             </div>
             {/* Close Menu */}
-            <div className="flex items-center flex justify-end text-gray-200">
+            <div className="mx-2 flex items-center flex justify-end text-gray-200">
                 <button onClick={handleChat} className="py-3 px-3 bg-indigo-500 rounded-lg text-gray-100">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />

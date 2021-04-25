@@ -10,6 +10,7 @@ module.exports = {
       indigo: colors.indigo,
       gray: colors.trueGray,
       white: colors.white,
+      red: colors.red,
     },
   },
   variants: {

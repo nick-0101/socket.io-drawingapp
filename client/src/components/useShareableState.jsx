@@ -5,7 +5,7 @@ const useShareableState = () => {
   const [colour, setColor] = React.useState('#000000')
   const [erase, setErase] = React.useState(false)
   const [chatOpen, setChatOpen] = React.useState(true);
-
+  
   return {
     sliderVal,
     setSliderVal,
