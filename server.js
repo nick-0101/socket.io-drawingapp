@@ -53,6 +53,14 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+const publicPath = path.join('client', 'build');
+
+app.use(express.static(publicPath));
+
+app.get('*', (req, res) => {
+  res.sendFile('client/build/index.html', { root: __dirname });
+});
+
 const port = process.env.PORT || 3001;
 
 http.listen(port, () => console.log(`Listening on port ${port}`));
