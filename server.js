@@ -40,9 +40,16 @@ io.sockets.on('connection', function (socket) {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  app.use(express.static(path.join(__dirname, './client/build')));
+  app.get('*', function (_, res) {
+    res.sendFile(
+      path.join(__dirname, './client/build/index.html'),
+      function (err) {
+        if (err) {
+          res.status(500).send(err);
+        }
+      }
+    );
   });
 }
 
