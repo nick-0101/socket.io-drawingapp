@@ -97,6 +97,7 @@ const Canvas = () => {
                     onMouseDown={() => setMouse({ ...mouse, click: true })}
                     onMouseMove={(e) => draw(e)}
                     onMouseUp={() => setMouse({ ...mouse, click: false })}
+
                     ref={canvasRef}  
                 />
             </div>
