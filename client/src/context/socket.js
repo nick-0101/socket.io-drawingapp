@@ -6,5 +6,5 @@ const socketURL =
     ? 'https://sockets-testapp.herokuapp.com'
     : 'http://localhost:3001';
 
-export const socket = socketio.connect(socketURL, { secure: true });
+export const socket = socketio.connect(socketURL);
 export const SocketContext = React.createContext();

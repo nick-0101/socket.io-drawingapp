@@ -100,7 +100,7 @@ const ChatBar = () => {
                     </div>
 
                     <div className='py-4 mb-auto'>
-                        <div className="text-center p-4 text-gray-200 font-bold ">{userCount} users are in the chat.</div>
+                        <div className="text-center p-4 text-gray-200 font-bold ">{userCount || 1} users are in the chat.</div>
                         {messages.map((message, index) => {
                             if (message.id === yourID) {
                                 return (<>
