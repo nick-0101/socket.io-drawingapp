@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const http = require('http').Server(app);
+const http = require('http').createServer(app);
 const cors = require('cors');
 
 const io = require('socket.io')(http, {
@@ -40,13 +40,9 @@ io.sockets.on('connection', function (socket) {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  const publicPath = path.join('client', 'build');
+  app.use(express.static(path.join(__dirname, '../../build')));
 
-  app.use(express.static(publicPath));
-
-  app.get('*', (req, res) => {
-    res.sendFile('client/build/index.html', { root: __dirname });
-  });
+  app.get('/', (req, res, next) => res.sendFile(__dirname + './index.html'));
 }
 
 const port = process.env.PORT || 3001;
