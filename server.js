@@ -40,7 +40,7 @@ io.sockets.on('connection', function (socket) {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/build')));
+  app.use(express.static(__dirname + '/public'));
 
   app.get('/', (req, res, next) =>
     res.sendFile(__dirname + '/client/build/index.html')
