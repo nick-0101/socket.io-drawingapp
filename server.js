@@ -9,7 +9,7 @@ const io = require('socket.io')(http, {
     origin: 'http://localhost:3000',
     methods: ['GET', 'POST'],
   },
-});
+}).listen(80);
 
 app.use(cors());
 
