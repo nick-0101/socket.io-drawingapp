@@ -1,5 +1,4 @@
 import React from 'react';
-// import styles from './DrawBar.module.css';
 
 // Shared state
 import useShareableState  from '../useShareableState'

@@ -41,10 +41,11 @@ io.sockets.on('connection', function (socket) {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'public')));
+  // app.use(express.static(path.join(__dirname, 'public')));
 
-  app.get('/', (req, res, next) =>
-    res.sendFile(__dirname + '/client/build/index.html')
-  );
+  // app.get('/', (req, res, next) =>
+  //   res.sendFile(__dirname + '/client/build/index.html')
+  // );
 }
 
 const port = process.env.PORT || 3001;
