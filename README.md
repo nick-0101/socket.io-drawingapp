@@ -1,7 +1,7 @@
 # SocketIO Collaborative Drawing & Messaging #
 This project was created to learn about web sockets and tailwind css. This app allows you to draw with other people and chat with them at the same time. 
 
-The project can be found here: https://sockets-testapp.herokuapp.com
+The project can be found here: https://sockets-testapp.herokuapp.com (if not found, heroku has taken it offline)
 
 # Tech/framework used #
 Built with
